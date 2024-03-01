@@ -11,8 +11,7 @@ public class PlayerCollisionHandler : MonoBehaviour
 {
     [SerializeField] private Collider2D _collider;
     public event Action<IInteractable> CollisionDetected;
-
-
+    
     private void OnValidate()
     {
         GetComponent<Collider2D>().isTrigger = true;
