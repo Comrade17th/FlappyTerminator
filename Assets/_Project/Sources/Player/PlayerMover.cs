@@ -38,4 +38,9 @@ public class PlayerMover : MonoBehaviour
 
         transform.rotation = Quaternion.Lerp(transform.rotation, _minRotation, _rotationSpeed * Time.deltaTime);
     }
+
+    public void Reset()
+    {
+        
+    }
 }

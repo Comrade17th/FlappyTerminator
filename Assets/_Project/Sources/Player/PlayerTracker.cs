@@ -1,18 +1,17 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerTracker : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private Player _player;
+    [SerializeField] private float _offsetX;
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        var position = transform.position;
+        position.x = _player.transform.position.x + _offsetX;
+        transform.position = position;
     }
 }
