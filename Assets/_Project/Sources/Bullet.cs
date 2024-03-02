@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 
+[RequireComponent(typeof(Collider2D))]
 public class Bullet : MonoBehaviour
 {
     [SerializeField] private float _speed = 5f;
@@ -21,5 +22,17 @@ public class Bullet : MonoBehaviour
     public void SetDirection(Vector3 direction)
     {
         _direction = direction;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log(" bullet collides something");
+        
+        if (other.TryGetComponent(out Obstacle obstacle))
+        {
+            Debug.Log(" bullet collides obstalce");
+            Destroy(gameObject);
+        }
+            
     }
 }

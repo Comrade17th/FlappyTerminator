@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 public class Gun : MonoBehaviour
 {
@@ -13,30 +14,32 @@ public class Gun : MonoBehaviour
     private bool _isAbleShoot = true;
 
     private WaitForSeconds _waitShoot;
-    private Coroutine _coroutine;
-
+    // private Coroutine _coroutine;
+    private float _lastShootTime;
+    
     private void Awake()
     {
         _waitShoot = new WaitForSeconds(_shootCooldown);
 
-        if (!_bulletPrefab)
-            throw new Exception("Bullet not set");
+        Assert.IsNotNull(_bulletPrefab);
     }
 
     public void Shoot()
     {
-        if (_isAbleShoot)
+        if (Time.time - _lastShootTime > _shootCooldown)
         {
             Bullet bullet = Instantiate(_bulletPrefab, transform.position, transform.rotation);
             bullet.SetDirection(direction);
-            _coroutine = StartCoroutine(ShootCoolDown());    
+            
+            // _coroutine = StartCoroutine(ShootCoolDown());
+            _lastShootTime = Time.time;
         }
     }
 
-    private IEnumerator ShootCoolDown()
-    {
-        _isAbleShoot = false;
-        yield return _waitShoot;
-        _isAbleShoot = true;
-    }
+    // private IEnumerator ShootCoolDown()
+    // {
+    //     _isAbleShoot = false;
+    //     yield return _waitShoot;
+    //     _isAbleShoot = true;
+    // }
 }

@@ -41,6 +41,7 @@ public class Player : MonoBehaviour
    {
       if (interactable is Obstacle)
       {
+         Debug.Log("Game over");
          GameOver?.Invoke();
       }
       
