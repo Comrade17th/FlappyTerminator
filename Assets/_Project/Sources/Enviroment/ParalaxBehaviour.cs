@@ -7,7 +7,7 @@ public class ParallaxBehaviour : MonoBehaviour
 {
     [SerializeField] private Transform _followingTarget;
     [SerializeField, Range(0f, 1f)] private float _parallaxStenght = 0.1f;
-    [SerializeField] private bool _disableVerticalParallax;
+    [SerializeField] private float _moveSpeed = 10f;
 
     private Vector3 _targetPreviousPosition;
 
@@ -23,10 +23,10 @@ public class ParallaxBehaviour : MonoBehaviour
     {
         Vector3 delta = _followingTarget.position - _targetPreviousPosition;
 
-        if (_disableVerticalParallax)
-            delta.y = 0;
-
         _targetPreviousPosition = _followingTarget.position;
-        transform.position += delta * _parallaxStenght;
+        transform.position = Vector3.MoveTowards(
+            transform.position,
+            transform.position - delta * _parallaxStenght,
+            _moveSpeed * Time.deltaTime);
     }
 }

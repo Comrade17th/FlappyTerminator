@@ -21,9 +21,32 @@ public class Player : MonoBehaviour
       _handler = GetComponent<PlayerCollisionHandler>();
    }
 
+   private void OnEnable()
+   {
+      _handler.CollisionDetected += ProcessCollision;
+   }
+
+   private void OnDisable()
+   {
+      _handler.CollisionDetected -= ProcessCollision;
+   }
+   
    public void Reset()
    {
       _scoreCounter.Reset();
       _playerMover.Reset();
+   }
+
+   private void ProcessCollision(IInteractable interactable)
+   {
+      if (interactable is Obstacle)
+      {
+         GameOver?.Invoke();
+      }
+      
+      if (interactable is ScoreZone)
+      {
+         _scoreCounter.Add();
+      }
    }
 }
