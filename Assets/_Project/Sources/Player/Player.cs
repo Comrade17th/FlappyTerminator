@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerMover))]
@@ -39,7 +37,8 @@ public class Player : MonoBehaviour
 
    private void ProcessCollision(IInteractable interactable)
    {
-      if (interactable is Obstacle)
+      if (interactable is Obstacle ||
+          interactable is EnemyBullet)
       {
          Debug.Log("Game over");
          GameOver?.Invoke();

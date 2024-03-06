@@ -24,15 +24,11 @@ public class Bullet : MonoBehaviour
         _direction = direction;
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    protected virtual void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log(" bullet collides something");
-        
         if (other.TryGetComponent(out Obstacle obstacle))
         {
-            Debug.Log(" bullet collides obstalce");
             Destroy(gameObject);
         }
-            
     }
 }
