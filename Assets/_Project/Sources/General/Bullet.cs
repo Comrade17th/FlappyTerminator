@@ -1,8 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 
 [RequireComponent(typeof(Collider2D))]
 public class Bullet : MonoBehaviour

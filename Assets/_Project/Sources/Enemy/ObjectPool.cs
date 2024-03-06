@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -27,6 +25,7 @@ public class ObjectPool : MonoBehaviour
       if (_pool.Count == 0)
       {
          Enemy enemy = Instantiate(_prefab);
+         
          enemy.SetSpawner(this);
          enemy.SetCounter(_scoreCounter);
          enemy.transform.parent = _container;

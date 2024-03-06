@@ -42,7 +42,6 @@ public class Player : MonoBehaviour
       if (interactable is Obstacle ||
           interactable is EnemyBullet)
       {
-         Debug.Log("Game over");
          GameOver?.Invoke();
       }
       

@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerTracker : MonoBehaviour
@@ -11,6 +8,7 @@ public class PlayerTracker : MonoBehaviour
     private void Update()
     {
         var position = transform.position;
+        
         position.x = _player.transform.position.x + _offsetX;
         transform.position = position;
     }
