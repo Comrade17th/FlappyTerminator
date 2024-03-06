@@ -8,7 +8,8 @@ public class ObjectPool : MonoBehaviour
 {
    [SerializeField] private Transform _container;
    [SerializeField] private Enemy _prefab;
-
+   [SerializeField] private ScoreCounter _scoreCounter;
+   
    private Queue<Enemy> _pool;
 
    public IEnumerable<Enemy> PooledObjects => _pool;
@@ -16,6 +17,7 @@ public class ObjectPool : MonoBehaviour
    private void Awake()
    {
       _pool = new Queue<Enemy>();
+      Assert.IsNotNull(_scoreCounter);
       Assert.IsNotNull(_container);
       Assert.IsNotNull(_prefab);
    }
@@ -26,6 +28,7 @@ public class ObjectPool : MonoBehaviour
       {
          Enemy enemy = Instantiate(_prefab);
          enemy.SetSpawner(this);
+         enemy.SetCounter(_scoreCounter);
          enemy.transform.parent = _container;
 
          return enemy;

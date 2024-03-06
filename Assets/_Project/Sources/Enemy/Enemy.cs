@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private EnemyShooter _shooter;
 
     private ObjectPool _spawner;
+    private ScoreCounter _scoreCounter;
 
     private void Awake()
     {
@@ -27,10 +28,15 @@ public class Enemy : MonoBehaviour
     {
         _spawner = spawner;
     }
+    
+    public void SetCounter(ScoreCounter scoreCounter)
+    {
+        _scoreCounter = scoreCounter;
+    }
 
     public void ReturnToPool()
     {
-        Debug.Log($"Is Spawner null " + _spawner == null);
+        _scoreCounter.EnemyKilled();    
         _spawner.PutObject(this);
     }
 }
