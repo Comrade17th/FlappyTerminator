@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
 
    public event Action GameOver;
 
+   public int Score => _scoreCounter.Score;
+
    private void Awake()
    {
       _playerMover = GetComponent<PlayerMover>();

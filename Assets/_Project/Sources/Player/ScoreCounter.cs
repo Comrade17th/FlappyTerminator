@@ -12,6 +12,8 @@ public class ScoreCounter : MonoBehaviour
     
     private int _score;
     private Vector3 _positionLastAdd;
+
+    public int Score => _score;
     public event Action<int> Changed;
 
     private void Awake()

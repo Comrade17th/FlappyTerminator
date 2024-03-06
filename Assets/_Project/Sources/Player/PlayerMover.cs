@@ -50,6 +50,7 @@ public class PlayerMover : MonoBehaviour
 
     public void Reset()
     {
-        
+        transform.position = _startPosition;
+        _isFirstJumped = false;
     }
 }
