@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
-public class Bullet : MonoBehaviour
+public class Bullet : MonoBehaviour, IInteractable
 {
     [SerializeField] private float _speed = 5f;
     
@@ -15,16 +15,23 @@ public class Bullet : MonoBehaviour
             _speed * Time.deltaTime);
     }
 
-    public void SetDirection(Vector3 direction)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        _direction = direction;
-    }
-
-    protected virtual void OnTriggerEnter2D(Collider2D other)
-    {
+        Debug.Log($"Bullet collide {other.name}");
+        
         if (other.TryGetComponent(out Obstacle obstacle))
         {
             Destroy(gameObject);
         }
+        
+        if (other.TryGetComponent(out Enemy enemy))
+        {
+            enemy.ReturnToPool();
+        }
+    }
+    
+    public void SetDirection(Vector3 direction)
+    {
+        _direction = direction;
     }
 }

@@ -37,18 +37,12 @@ public class ScoreCounter : MonoBehaviour
 
     private void Update()
     {
-        if (transform.position.x - _positionLastAdd.x >= _distacneToAddScore &&
-            _isScoringMovement)
+        if (_isScoringMovement &&
+            transform.position.x - _positionLastAdd.x >= _distacneToAddScore)
         {
-            Add(_scorePerDistance);
+            ScoreDistanceAdd();
             _positionLastAdd = transform.position;
         }    
-    }
-    
-    public void Add()
-    {
-        _score++;
-        Changed?.Invoke(_score);
     }
     
     public void Add(int value)
@@ -56,6 +50,11 @@ public class ScoreCounter : MonoBehaviour
         if(value > 0)
         _score += value;
         Changed?.Invoke(_score);
+    }
+    
+    public void ScoreDistanceAdd()
+    {
+        Add(_scorePerDistance);
     }
 
     public void EnemyKilled()

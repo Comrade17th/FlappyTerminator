@@ -41,7 +41,7 @@ public class Player : MonoBehaviour
    private void ProcessCollision(IInteractable interactable)
    {
       if (interactable is Obstacle ||
-          interactable is EnemyBullet)
+          interactable is Bullet)
       {
          GameOver?.Invoke();
       }
