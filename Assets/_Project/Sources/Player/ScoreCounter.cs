@@ -1,9 +1,10 @@
 using System;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class ScoreCounter : MonoBehaviour
 {
+    [SerializeField] private InputHandler _inputHandler;
+    
     [SerializeField] private int _scorePerDistance = 1;
     [SerializeField] private int _distacneToAddScore = 1;
     [SerializeField] private int _scorePerEnemy = 50;
@@ -11,6 +12,8 @@ public class ScoreCounter : MonoBehaviour
     private int _score;
     private Vector3 _startPosition;
     private Vector3 _positionLastAdd;
+
+    private bool _isScoringMovement = false;
 
     public int Score => _score;
     
@@ -21,10 +24,21 @@ public class ScoreCounter : MonoBehaviour
         _startPosition = transform.position;
         _positionLastAdd = _startPosition;
     }
-    
+
+    private void OnEnable()
+    {
+        _inputHandler.FlyKeyPressed += EnableScoringMovement;
+    }
+
+    private void OnDisable()
+    {
+        _inputHandler.FlyKeyPressed -= EnableScoringMovement;
+    }
+
     private void Update()
     {
-        if (transform.position.x - _positionLastAdd.x >= _distacneToAddScore)
+        if (transform.position.x - _positionLastAdd.x >= _distacneToAddScore &&
+            _isScoringMovement)
         {
             Add(_scorePerDistance);
             _positionLastAdd = transform.position;
@@ -51,8 +65,23 @@ public class ScoreCounter : MonoBehaviour
     
     public void Reset()
     {
+        DisableScoringMovement();
         _score = 0;
         _positionLastAdd = _startPosition;
         Changed?.Invoke(_score);
+    }
+
+    private void EnableScoringMovement()
+    {
+        if (_isScoringMovement == false)
+        {
+            _positionLastAdd = transform.position;
+            _isScoringMovement = true;    
+        }
+    }
+
+    private void DisableScoringMovement()
+    {
+        _isScoringMovement = false;
     }
 }

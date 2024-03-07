@@ -1,9 +1,10 @@
 using System;
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerMover))]
-[RequireComponent(typeof(ScoreCounter))]
-[RequireComponent(typeof(PlayerCollisionHandler))]
+[RequireComponent(
+   typeof(PlayerMover),
+   typeof(PlayerCollisionHandler)
+   )]
 public class Player : MonoBehaviour
 {
    private PlayerMover _playerMover;
@@ -43,11 +44,6 @@ public class Player : MonoBehaviour
           interactable is EnemyBullet)
       {
          GameOver?.Invoke();
-      }
-      
-      if (interactable is ScoreZone)
-      {
-         _scoreCounter.Add();
       }
    }
 }

@@ -1,9 +1,9 @@
 using System;
 using UnityEngine;
 
-[RequireComponent(typeof(Player))]
-[RequireComponent(typeof(Collider2D))]
-
+[RequireComponent(
+    typeof(Player),
+    typeof(Collider2D))]
 public class PlayerCollisionHandler : MonoBehaviour
 {
     [SerializeField] private Collider2D _collider;
