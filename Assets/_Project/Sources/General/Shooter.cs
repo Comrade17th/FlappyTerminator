@@ -3,10 +3,15 @@ using UnityEngine.Assertions;
 
 public class Shooter : MonoBehaviour
 {
-    [SerializeField] protected Gun Gun;
+    [SerializeField] private Gun _gun;
 
     protected virtual void Awake()
     {
-        Assert.IsNotNull(Gun);
+        Assert.IsNotNull(_gun);
+    }
+
+    protected void Shoot()
+    {
+        _gun.Shoot();
     }
 }

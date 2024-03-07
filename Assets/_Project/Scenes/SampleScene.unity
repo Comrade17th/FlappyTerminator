@@ -1153,6 +1153,7 @@ GameObject:
   - component: {fileID: 744274295}
   - component: {fileID: 744274296}
   - component: {fileID: 744274297}
+  - component: {fileID: 744274298}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1317,8 +1318,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0335e20e064cd4c6ab3e4d592d544f3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Gun: {fileID: 2116340694}
-  _shootKey: 110
+  _gun: {fileID: 2116340694}
+  _inputHandler: {fileID: 744274298}
 --- !u!114 &744274297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1333,6 +1334,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _counter: {fileID: 744274295}
   _textMeshPro: {fileID: 1029119525}
+--- !u!114 &744274298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 744274288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f46ddcb82dc444ef3b425825b17ac81e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shootKey: 110
 --- !u!1 &924696081
 GameObject:
   m_ObjectHideFlags: 0

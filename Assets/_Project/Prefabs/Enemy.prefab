@@ -213,7 +213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f15f292f8e3794acebd8f7788b6013bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Gun: {fileID: 4204602330081207316}
+  _gun: {fileID: 4204602330081207316}
   _shootCooldown: 3
 --- !u!61 &405354510407637682
 BoxCollider2D:

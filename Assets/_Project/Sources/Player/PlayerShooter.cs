@@ -1,14 +1,18 @@
 using UnityEngine;
+using UnityEngine.Assertions;
 
 public class PlayerShooter : Shooter
 {
-    [SerializeField] private KeyCode _shootKey = KeyCode.N;
+    [SerializeField] private InputHandler _inputHandler;
 
-    private void Update()
+    protected override void Awake()
     {
-        if (Input.GetKeyDown(_shootKey))
-        {
-            Gun.Shoot();
-        }
+        base.Awake();
+        Assert.IsNotNull(_inputHandler);   
+    }
+    
+    private void OnEnable()
+    {
+        _inputHandler.ShootKeyPressed += Shoot;
     }
 }

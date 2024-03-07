@@ -23,7 +23,7 @@ public class EnemyShooter : Shooter
     {
         while (gameObject.activeSelf)
         {
-            Gun.Shoot();
+            Shoot();
             yield return _waitShoot;    
         }
     }
