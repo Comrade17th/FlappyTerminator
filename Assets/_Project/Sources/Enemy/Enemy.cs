@@ -5,8 +5,7 @@ using UnityEngine.Assertions;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private EnemyShooter _shooter;
-
-    private ObjectPool _spawner;
+    
     private ScoreCounter _scoreCounter;
 
     private void Awake()
