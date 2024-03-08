@@ -26,7 +26,7 @@ public class ObjectPool : MonoBehaviour
       {
          Enemy enemy = Instantiate(_prefab);
          
-         enemy.SetSpawner(this);
+         // enemy.SetSpawner(this);
          enemy.SetCounter(_scoreCounter);
          enemy.transform.parent = _container;
 

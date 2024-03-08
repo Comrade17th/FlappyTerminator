@@ -17,8 +17,6 @@ public class Bullet : MonoBehaviour, IInteractable
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log($"Bullet collide {other.name}");
-        
         if (other.TryGetComponent(out Obstacle obstacle))
         {
             Destroy(gameObject);

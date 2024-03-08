@@ -1221,7 +1221,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!114 &744274292
 MonoBehaviour:
@@ -2869,7 +2869,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1850845539}
   - component: {fileID: 1850845541}
-  - component: {fileID: 1850845540}
   m_Layer: 0
   m_Name: EnemySpawner
   m_TagString: Untagged
@@ -2892,21 +2891,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 519420032}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1850845540
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1850845538}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42a3add5cd4f34da9b53d40e4258d59a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _container: {fileID: 551145877}
-  _prefab: {fileID: 8706807765210097196, guid: bde036b20e02a4d49b8c970fbd2b460c, type: 3}
-  _scoreCounter: {fileID: 744274295}
 --- !u!114 &1850845541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2919,10 +2903,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17d4398e6922141b1ba1a39244ee5a32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _delay: 5
+  _prefab: {fileID: 8706807765210097196, guid: bde036b20e02a4d49b8c970fbd2b460c, type: 3}
+  _delay: 3
   _lowerBound: -4
   _upperBound: 4
-  _pool: {fileID: 1850845540}
 --- !u!1 &2078560817
 GameObject:
   m_ObjectHideFlags: 0

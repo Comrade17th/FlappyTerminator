@@ -19,10 +19,10 @@ public class Enemy : MonoBehaviour
         _shooter.LaunchShooting();
     }
 
-    public void SetSpawner(ObjectPool spawner)
-    {
-        _spawner = spawner;
-    }
+    // public void SetSpawner(ObjectPool spawner)
+    // {
+    //     _spawner = spawner;
+    // }
     
     public void SetCounter(ScoreCounter scoreCounter)
     {
@@ -31,7 +31,6 @@ public class Enemy : MonoBehaviour
 
     public void ReturnToPool()
     {
-        _scoreCounter.EnemyKilled();    
-        _spawner.PutObject(this);
+        gameObject.SetActive(false);
     }
 }

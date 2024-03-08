@@ -4,17 +4,18 @@ using UnityEngine.Assertions;
 
 public class EnemySpawner : MonoBehaviour
 {
+   [SerializeField] private Enemy _prefab;
    [SerializeField] private float _delay;
    [SerializeField] private float _lowerBound;
    [SerializeField] private float _upperBound;
-   [SerializeField] private ObjectPool _pool;
-
+    
+   private Pool<Enemy> _pool;
    private WaitForSeconds _waitSpawn;
 
    private void Awake()
    {
+      _pool = new Pool<Enemy>(_prefab, transform, 0);
       _waitSpawn = new WaitForSeconds(_delay);
-      Assert.IsNotNull(_pool);
    }
 
    private void Start()
@@ -39,7 +40,7 @@ public class EnemySpawner : MonoBehaviour
          spawnPositionY,
          transform.position.z);
 
-      Enemy enemy = _pool.GetObject();
+      Enemy enemy = _pool.Peek();
       enemy.transform.position = spawnPoint;
    }
    
