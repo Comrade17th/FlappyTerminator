@@ -7,14 +7,16 @@ public class Pool<Template> where Template : MonoBehaviour
 
     private readonly Template _prefab;
     private readonly Transform _container;
+    private readonly Transform _spawnPoint;
     private readonly int _startAmount;
 
     private int PoolCount => _pool.Count;
 
-    public Pool(Template prefab, Transform container, int startAmount)
+    public Pool(Template prefab, Transform container, Transform spawnPoint,int startAmount)
     {
         _prefab = prefab;
         _container = container;
+        _spawnPoint = spawnPoint;
         _startAmount = startAmount;
 
         for (int i = 0; i < _startAmount; i++)
@@ -60,7 +62,7 @@ public class Pool<Template> where Template : MonoBehaviour
 
     private Template Create()
     {
-        Template template = Object.Instantiate(_prefab, _container);
+        Template template =  Object.Instantiate(_prefab, _container, _spawnPoint);
         template.gameObject.SetActive(false);
         _pool.Add(template);
 

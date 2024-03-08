@@ -1,7 +1,5 @@
-using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Assertions;
 using Random = UnityEngine.Random;
 
 public class EnemySpawner : MonoBehaviour
@@ -17,7 +15,7 @@ public class EnemySpawner : MonoBehaviour
 
    private void Awake()
    {
-      _pool = new Pool<Enemy>(_prefab, transform, 0);
+      _pool = new Pool<Enemy>(_prefab, transform, transform,0);
       _waitSpawn = new WaitForSeconds(_delay);
    }
 
@@ -43,13 +41,13 @@ public class EnemySpawner : MonoBehaviour
    private void Spawn()
    {
       float spawnPositionY = Random.Range(_upperBound, _lowerBound);
-      Vector3 spawnPoint = new Vector3(
+      Vector3 spawnPosition = new Vector3(
          transform.position.x,
          spawnPositionY,
          transform.position.z);
-
+      
       Enemy enemy = _pool.Peek();
       enemy.SetCounter(_scoreCounter);
-      enemy.transform.position = spawnPoint;
+      enemy.transform.position = spawnPosition;
    }
 }

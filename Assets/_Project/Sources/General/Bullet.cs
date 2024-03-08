@@ -17,14 +17,14 @@ public class Bullet : MonoBehaviour, IInteractable
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.TryGetComponent(out Obstacle obstacle))
-        {
-            Destroy(gameObject);
-        }
-        
         if (other.TryGetComponent(out Enemy enemy))
         {
             enemy.ReturnToPool();
+        }
+        
+        if (other.TryGetComponent(out Obstacle obstacle))
+        {
+            gameObject.SetActive(false);
         }
     }
     
