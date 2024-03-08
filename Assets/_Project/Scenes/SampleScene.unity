@@ -921,6 +921,7 @@ MonoBehaviour:
   _player: {fileID: 744274292}
   _startScreen: {fileID: 1384383949}
   _endGameScreen: {fileID: 1422607707}
+  _enemySpawner: {fileID: 1850845541}
 --- !u!1 &544024594
 GameObject:
   m_ObjectHideFlags: 0
@@ -2903,6 +2904,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17d4398e6922141b1ba1a39244ee5a32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _scoreCounter: {fileID: 744274295}
   _prefab: {fileID: 8706807765210097196, guid: bde036b20e02a4d49b8c970fbd2b460c, type: 3}
   _delay: 3
   _lowerBound: -4
@@ -3375,7 +3377,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5419370183227372176, guid: bfd7220616a8a4e8aa2e3b5bfd229c51, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.348
+      value: 0.64
       objectReference: {fileID: 0}
     - target: {fileID: 5419370183227372176, guid: bfd7220616a8a4e8aa2e3b5bfd229c51, type: 3}
       propertyPath: m_LocalPosition.y

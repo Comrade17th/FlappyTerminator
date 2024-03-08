@@ -5,6 +5,7 @@ public class Game : MonoBehaviour
     [SerializeField] private Player _player;
     [SerializeField] private StartScreen _startScreen;
     [SerializeField] private EndGameScreen _endGameScreen;
+    [SerializeField] private EnemySpawner _enemySpawner;
 
     private void Start()
     {
@@ -48,6 +49,7 @@ public class Game : MonoBehaviour
     {
         Time.timeScale = 1;
         _player.Reset();
+        _enemySpawner.Reset();
         _startScreen.Close();
         _endGameScreen.Close();
     }

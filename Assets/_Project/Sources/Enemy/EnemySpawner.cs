@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Assertions;
+using Random = UnityEngine.Random;
 
 public class EnemySpawner : MonoBehaviour
 {
+   [SerializeField] private ScoreCounter _scoreCounter;
    [SerializeField] private Enemy _prefab;
    [SerializeField] private float _delay;
    [SerializeField] private float _lowerBound;
@@ -21,6 +24,11 @@ public class EnemySpawner : MonoBehaviour
    private void Start()
    {
       StartCoroutine(SpawnEnemies());
+   }
+
+   public void Reset()
+   {
+      _pool.Reset();
    }
 
    private IEnumerator SpawnEnemies()
@@ -41,7 +49,7 @@ public class EnemySpawner : MonoBehaviour
          transform.position.z);
 
       Enemy enemy = _pool.Peek();
+      enemy.SetCounter(_scoreCounter);
       enemy.transform.position = spawnPoint;
    }
-   
 }

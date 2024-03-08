@@ -23,6 +23,14 @@ public class Pool<Template> where Template : MonoBehaviour
         }
     }
 
+    public void Reset()
+    {
+        foreach (Template template in _pool)
+        {
+            template.gameObject.SetActive(false);
+        }
+    }
+
     public Template Peek()
     {
         if (TryGetObject(out Template template) == false)
